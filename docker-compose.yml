@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # 1. MariaDB Database Service
+  db:
+    image: mariadb:latest
+    container_name: db_monster_hunter
+    restart: no
+    environment:
+      # CRITICAL: Sets the initial database name
+      MARIADB_DATABASE: "monster_hunter_db"
+      # Sets the root password for initial setup
+      MARIADB_ROOT_PASSWORD: servitor
+      # OPTIONAL: Creates a regular user and password
+      MARIADB_USER: "overseer"
+      MARIADB_PASSWORD: "servitor"
+    ports:
+      # Exposes port 3306 on the host machine to access it with lazysql
+      - "3306:3306"
+    volumes:
+      # Persists the data in a volume named 'mariadb_data'
+      - mariadb_data:/var/lib/mysql
+
+  # 2. PHP Application Service (e.g., PHP-FPM for Nginx/Apache)
+  #    (You may need to adjust the image based on your exact needs)
+  app:
+    # Example: PHP 8.2 FPM image
+    # image: php:8.2-apache
+    build: .
+    container_name: php_mhdb
+    restart: no
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount your local code directory (where your PHP files are)
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data: # Define the persistent volume
