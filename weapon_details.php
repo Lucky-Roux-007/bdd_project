@@ -45,7 +45,7 @@ $materials = $stmtMats->fetchAll();
 </head>
 <body>
 
-    <div class="container" style="margin-top: 40px;">
+    <div class="container weapon-details-wrapper">
         
         <div class="detail-header">
             <div style="display: flex; align-items: center; gap: 20px;">
@@ -53,7 +53,7 @@ $materials = $stmtMats->fetchAll();
                      style="width: 80px; height: 80px; object-fit: contain; border: 1px solid var(--gold); padding: 10px; background: #111; border-radius: 4px;">
                 
                 <div>
-                    <div style="color: var(--gold-dim); font-family: monospace; letter-spacing: 2px;">
+                    <div class="text-muted-inline" style="font-family: monospace; letter-spacing: 2px;">
                         <?= htmlspecialchars($weapon['Type_Name']) ?> TREE
                     </div>
                     <h1 class="rarity-<?= $weapon['Rarity'] ?>" style="font-size: 3rem; margin: 0; line-height: 1;">
@@ -73,32 +73,32 @@ $materials = $stmtMats->fetchAll();
                 <div class="info-box">
                     <h3 class="section-title">WEAPON STATISTICS</h3>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 1.1rem; margin-top: 20px;">
+                    <div class="weapon-stats-grid">
                         <div>
-                            <span style="color: #666; font-size: 0.8rem; text-transform: uppercase;">Attack Power</span><br>
-                            <span style="color: var(--gold); font-weight: bold; font-size: 1.4rem;">
+                            <span class="weapon-stat-label">Attack Power</span><br>
+                            <span class="weapon-stat-value">
                                 <?= $weapon['Attack_Power'] ?>
                             </span>
                         </div>
                         <div>
-                            <span style="color: #666; font-size: 0.8rem; text-transform: uppercase;">Affinity</span><br>
-                            <span style="<?= $weapon['Affinity'] > 0 ? 'color: #ffaaaa;' : 'color: #ccc;' ?>">
+                            <span class="weapon-stat-label">Affinity</span><br>
+                            <span class="weapon-stat-value affinity <?= $weapon['Affinity'] > 0 ? 'affinity-positive' : '' ?>">
                                 <?= $weapon['Affinity'] ?>%
                             </span>
                         </div>
                         <div>
-                            <span style="color: #666; font-size: 0.8rem; text-transform: uppercase;">Element</span><br>
+                            <span class="weapon-stat-label">Element</span><br>
                             <?php if ($weapon['Element_ID']): ?>
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <img src="assets/elements/<?= htmlspecialchars($weapon['Element_Icon']) ?>" style="width: 20px;">
-                                    <span style="font-weight: bold;"><?= $weapon['Element_Name'] ?> <?= $weapon['Element_Value'] ?></span>
+                                <div class="monster-element-container">
+                                    <img src="assets/elements/<?= htmlspecialchars($weapon['Element_Icon']) ?>" class="monster-element-img">
+                                    <span class="monster-element-text"><?= $weapon['Element_Name'] ?> <?= $weapon['Element_Value'] ?></span>
                                 </div>
                             <?php else: ?>
-                                <span style="color: #444;">None</span>
+                                <span class="weapon-none-element">None</span>
                             <?php endif; ?>
                         </div>
                         <div>
-                            <span style="color: #666; font-size: 0.8rem; text-transform: uppercase;">Defense Bonus</span><br>
+                            <span class="weapon-stat-label">Defense Bonus</span><br>
                             <?= isset($weapon['Defense']) && $weapon['Defense'] > 0 ? "+" . $weapon['Defense'] : "-" ?>
                         </div>
                     </div>
@@ -128,11 +128,11 @@ $materials = $stmtMats->fetchAll();
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <div style="margin-top: 15px; text-align: right; color: var(--gold);">
+                <div class="crafting-funds">
                     <small>Required Funds: 60,000z</small>
                 </div>
                 <?php else: ?>
-                    <p style="color: #666; font-style: italic; padding: 20px; text-align: center; border: 1px dashed #444;">
+                    <p class="crafting-recipe-none">
                         No crafting recipe registered.
                     </p>
                 <?php endif; ?>

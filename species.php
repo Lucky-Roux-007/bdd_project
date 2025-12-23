@@ -25,17 +25,18 @@ $species = $stmt->fetchAll();
 
 <div class="container" style="margin-top: 40px;">
     <h1 class="section-title">Known Species</h1>
-    <p style="color: #ccc; margin-bottom: 30px;">Ecological classification of documented monsters.</p>
+    <p class="text-muted-inline" style="margin-bottom: 30px;">Ecological classification of documented monsters.</p>
 
-    <div class="weapon-list"> <?php foreach ($species as $s): ?>
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 20px; border-bottom: 1px solid #333;">
-                <div>
-                    <h2 style="color: var(--gold); margin: 0 0 5px 0;"><?= htmlspecialchars($s['Name']) ?></h2>
-                    <p style="color: #aaa; margin: 0; font-size: 0.9rem;"><?= htmlspecialchars($s['Description']) ?></p>
+    <div class="weapon-list">
+        <?php foreach ($species as $s): ?>
+            <div class="species-item">
+                <div class="species-info">
+                    <h2 class="species-name"><?= htmlspecialchars($s['Name']) ?></h2>
+                    <p class="species-description"><?= htmlspecialchars($s['Description']) ?></p>
                 </div>
-                <div style="text-align: right;">
-                    <span style="font-size: 1.5rem; font-weight: bold; color: #fff;"><?= $s['Monster_Count'] ?></span>
-                    <br><span style="color: #666; font-size: 0.8rem; text-transform: uppercase;">Registered</span>
+                <div class="species-count-section">
+                    <span class="species-count"><?= $s['Monster_Count'] ?></span>
+                    <br><span class="species-count-label">Registered</span>
                 </div>
             </div>
         <?php endforeach; ?>

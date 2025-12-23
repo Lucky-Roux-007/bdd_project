@@ -74,71 +74,47 @@ a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
 
 
 /* --- CODEX BANNER (Formerly Hero) --- */
-.codex-banner {
-    text-align: center;
-    padding: 80px 20px;
-    background: radial-gradient(circle at center, #2a2a2a 0%, #0f0f0f 80%);
-    border-bottom: 1px solid var(--gold-dim);
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-.codex-banner::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(197,160,89,0.1) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-}
-
-.codex-banner h1 {
-    font-size: 4rem;
-    color: var(--gold);
-    margin-bottom: 10px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
-}
-
-.codex-banner p {
-    color: var(--text-muted);
-    font-style: italic;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-}
-
-
-/* --- PORTAL GRID (Index Page) --- */
-.portal-grid {
+.armory-header,
+.weapon-row {
+    /* Use grid for predictable column alignment */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: -60px;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: 1fr 80px 80px 100px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
 }
 
-.portal-card {
-    background: rgba(27, 27, 27, 0.95);
-    
-    /* FIX 1: Gold Border added here */
-    border: 1px solid var(--gold);
-    
-    padding: 30px 20px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    display: block;
-    transition: all 0.3s ease;
+.armory-header {
+    border-bottom: 2px solid #444;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+ 
+/* --- PORTAL GRID (Index Page) --- */
+.weapon-row {
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+    transition: background 0.2s;
 }
 
-.portal-card:hover {
-    border-color: var(--highlight); /* Brighter gold on hover */
-    background: #222;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); /* Gold glow */
-}
+.weapon-row:hover { background: #252525; }
+
+/* Ensure the name column contents align nicely */
+.list-item-name { display: flex; align-items: center; gap: 0.6rem; }
+
+/* icon sized to match surrounding text */
+.list-item-name { font-size: 1rem; }
+.list-item-icon { width: 1.1em; height: 1.1em; object-fit: contain; display: inline-block; margin-right: 0.6rem; vertical-align: middle; }
+
+/* element icon (right column) slightly smaller so it doesn't overpower text */
+.weapon-element-icon { width: 0.9em; height: 0.9em; object-fit: contain; display: inline-block; vertical-align: middle; }
+
+/* small helper: keep numbers monospace */
+.list-stat { font-family: monospace; color: #ccc; font-size: 1rem; text-align: right; }
+
+.weapon-name { font-weight: 700; font-size: 1rem; }
 
 .portal-card h3 { color: var(--gold); margin-bottom: 5px; font-weight: bold; }
 
@@ -303,6 +279,22 @@ a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
     background: rgba(197, 160, 89, 0.1);
 }
 
+/* Fix for rank-badge position */
+.rank-badge {
+    position: static;
+    float: right;
+    margin-left: 10px;
+}
+
+/* Monster name border removal fix */
+.monster-name {
+    border: none;
+}
+
+.monster-name h2 {
+    margin: 0 0 5px 0;
+}
+
 /* --- MONSTER LIST UPDATES --- */
 /* Override the previous column layout to be a Row */
 .monster-card {
@@ -373,33 +365,62 @@ a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
 
 /* --- ARMORY GRID LAYOUT --- */
 .armory-header {
-    display: grid;
-    grid-template-columns: 1fr 80px 80px 100px; /* The master grid definition */
-    gap: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
     padding: 10px 20px;
     border-bottom: 2px solid #444;
     color: #888;
     font-size: 0.8rem;
     text-transform: uppercase;
     font-family: monospace;
+    gap: 0;
 }
 
+.armory-header > div:nth-child(1) {
+    flex-grow: 1;
+}
+
+.armory-header > div:nth-child(2),
+.armory-header > div:nth-child(3) {
+    width: 80px;
+    text-align: right;
+}
+
+.armory-header > div:nth-child(4) {
+    width: 100px;
+    text-align: right;
+}
+
+/* Ensure header children behave as flex items */
+.armory-header > div { display: block; }
 .weapon-row {
-    display: grid;
-    grid-template-columns: 1fr 80px 80px 100px; /* Matches header exactly */
-    gap: 10px;
+    display: flex;
     align-items: center;
-    background: #151515;
-    border-bottom: 1px solid #2a2a2a;
     padding: 12px 20px;
+    border-bottom: 1px solid #222;
     text-decoration: none;
     transition: background 0.2s;
+    gap: 0;
 }
 
+.weapon-row .list-item-name {
+    flex-grow: 1;
+}
+
+.weapon-row .list-stat {
+    width: 80px;
+    text-align: right;
+}
+
+.weapon-row > div:last-child {
+    width: 100px;
+    text-align: right;
+}
 .weapon-row:hover {
     background: #252525;
-    border-left: 3px solid var(--gold);
-    padding-left: 17px; /* Adjust padding to keep alignment */
 }
 
 /* Icons: Strict sizing, NO INVERT */
@@ -409,20 +430,142 @@ a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
     object-fit: contain;
     vertical-align: middle;
     margin-right: 10px;
-    /* filter: invert(1); REMOVED: Icons will show original colors */
 }
 
 /* Column Alignment Helpers */
 .col-right { text-align: right; }
 .col-center { text-align: center; }
 
-/* Text Colors */
-.stat-atk { color: #ccc; font-family: monospace; font-size: 1rem; }
-.stat-aff { color: #ccc; font-family: monospace; font-size: 1rem; }
-.stat-aff.positive { color: #ffaaaa; }
-.stat-ele { display: flex; align-items: center; justify-content: flex-end; gap: 5px; color: #fff; font-weight: bold; }
-
 /* Ensure Rarity Colors work on text */
 .rarity-1, .rarity-2, .rarity-3, .rarity-4 { color: var(--rare-4); }
 .rarity-5, .rarity-6, .rarity-7, .rarity-8 { color: var(--rare-6); }
 .rarity-9, .rarity-10, .rarity-11, .rarity-12 { color: var(--rare-10); text-shadow: 0 0 5px rgba(245, 215, 110, 0.3); }
+/* --- NAVBAR DIVIDER --- */
+.divider { 
+    color: #444; 
+    user-select: none; 
+    margin: 0 5px; 
+}
+
+/* --- UTILITY CLASSES --- */
+.text-muted-inline { color: #888; }
+.error-container { text-align: center; padding: 50px; }
+
+/* --- RECORD COUNT DISPLAY --- */
+.record-count { color: var(--text-muted); }
+.record-count-highlight { color: var(--gold); }
+
+/* --- HABITAT GRID --- */
+.habitat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.habitat-item {
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.habitat-item:hover { transform: scale(1.03); }
+
+.habitat-item-image {
+    width: 100%;
+    max-width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #444;
+}
+
+.habitat-item-title { margin-top: 15px; color: var(--gold); }
+
+/* --- WEAPON & SPECIES LIST SHARED STYLES --- */
+.list-item-name {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* cleanup: removed duplicate rules above */
+
+.list-stat { font-family: monospace; color: #ccc; font-size: 1rem; }
+.list-stat.positive { color: #ffaaaa; }
+.list-stat.neutral { color: #888; }
+
+/* --- SPECIES LIST SPECIFIC --- */
+.species-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.species-info { flex-grow: 1; }
+.species-name { color: var(--gold); margin: 0 0 5px 0; }
+.species-description { color: #aaa; margin: 0; font-size: 0.9rem; }
+.species-count { font-size: 1.5rem; font-weight: bold; color: #fff; }
+.species-count-label { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+
+/* --- STATS GRID (Monster & Weapon Details) --- */
+.detail-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+.stat-label { color: #666; font-size: 0.8rem; text-transform: uppercase; }
+.stat-value { color: var(--gold); font-weight: bold; font-size: 1.4rem; }
+.stat-value.affinity-neutral { color: #ccc; }
+.stat-value.affinity-positive { color: #ffaaaa; }
+
+/* --- ELEMENT STYLING --- */
+.element-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.element-icon-small { width: 20px; }
+.element-text { font-weight: bold; }
+
+/* --- DETAIL PAGE WRAPPERS --- */
+.detail-page { margin-top: 40px; }
+
+/* --- CODEX BANNER VARIANTS --- */
+.codex-banner-sm { padding: 40px 20px; min-height: auto; }
+.codex-banner-sm h1 { font-size: 2.5rem; }
+.codex-banner-h3 { margin-bottom: 0; line-height: 1; }
+
+/* --- CRAFTING SECTION --- */
+.crafting-funds { margin-top: 15px; text-align: right; color: var(--gold); }
+.crafting-recipe-none {
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+    border: 1px dashed #444;
+}
+
+/* --- DESCRIPTION TEXT --- */
+.description-text { font-style: italic; color: #ccc; line-height: 1.8; }
+
+/* --- STATUS MESSAGES --- */
+.no-data { color: #666; }
+
+/* Responsive media query for navbar */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .divider {
+        display: none;
+    }
+}

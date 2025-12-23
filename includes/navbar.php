@@ -28,12 +28,3 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="login.php" class="nav-link">HUNTER LOGIN</a>
     <?php endif; ?>
 </nav>
-
-<style>
-    .divider { color: #444; user-select: none; margin: 0 5px; }
-    /* Responsive tweak: stack links on very small screens if needed */
-    @media (max-width: 768px) {
-        .navbar { display: flex; flex-direction: column; gap: 10px; }
-        .divider { display: none; }
-    }
-</style>

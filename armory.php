@@ -28,56 +28,52 @@ $weapons = $stmt->fetchAll();
 </head>
 <body>
 
-    <div class="codex-banner" style="padding: 40px 20px; min-height: auto;">
-        <h1 style="font-size: 2.5rem;">GUILD ARMORY</h1>
+    <div class="codex-banner codex-banner-sm">
+        <h1 class="codex-banner-h3">GUILD ARMORY</h1>
         <p>Select a weapon to view crafting specifications.</p>
     </div>
 
     <div class="container">
         
-        <div style="display: flex; align-items: center; padding: 10px 20px; border-bottom: 2px solid #444; color: #888; font-size: 0.8rem; text-transform: uppercase; font-family: monospace;">
-            <div style="flex-grow: 1;">Weapon Name</div>
-            
-            <div style="width: 80px; text-align: right;">Attack</div>
-            <div style="width: 80px; text-align: right;">Affinity</div>
-            <div style="width: 100px; text-align: right;">Element</div>
+        <div class="armory-header">
+            <div>Name</div>
+            <div>Attack</div>
+            <div>Affinity</div>
+            <div>Element</div>
         </div>
 
         <div class="weapon-list">
             <?php foreach ($weapons as $w): ?>
                 
-                <a href="weapon_details.php?id=<?= $w['Weapon_ID'] ?>" 
-                   style="display: flex; align-items: center; padding: 12px 20px; border-bottom: 1px solid #222; text-decoration: none; color: inherit; transition: background 0.2s;"
-                   onmouseover="this.style.background='#252525'" 
-                   onmouseout="this.style.background='transparent'">
+                <a href="weapon_details.php?id=<?= $w['Weapon_ID'] ?>" class="weapon-row">
                     
-                    <div style="flex-grow: 1; display: flex; align-items: center;">
+                    <div class="list-item-name">
                         <img src="assets/weapons/<?= htmlspecialchars($w['Type_Icon'] ?? 'icon_armory.png') ?>" 
                              alt="Icon"
-                             style="width: 28px; height: 28px; object-fit: contain; margin-right: 15px;">
+                             class="list-item-icon">
                         
-                        <span class="rarity-<?= $w['Rarity'] ?>" style="font-weight: bold; font-size: 1.1rem;">
+                        <span class="rarity-<?= $w['Rarity'] ?> weapon-name">
                             <?= htmlspecialchars($w['Name']) ?>
                         </span>
                     </div>
 
-                    <div style="width: 80px; text-align: right; font-family: monospace; color: #ccc; font-size: 1rem;">
+                    <div class="list-stat col-right">
                         <?= $w['Attack_Power'] ?>
                     </div>
                     
-                    <div style="width: 80px; text-align: right; font-family: monospace; font-size: 1rem; color: <?= $w['Affinity'] > 0 ? '#ffaaaa' : '#888' ?>;">
+                    <div class="list-stat col-right <?= $w['Affinity'] > 0 ? 'positive' : 'neutral' ?>">
                         <?= $w['Affinity'] ?>%
                     </div>
                     
-                    <div style="width: 100px; text-align: right;">
+                    <div class="col-right">
                         <?php if ($w['Element_ID']): ?>
-                            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 5px;">
-                                <span style="color: #fff; font-weight: bold; font-family: monospace; font-size: 1rem;"><?= $w['Element_Value'] ?></span>
+                            <div class="weapon-element-container">
+                                <span class="weapon-element-value"><?= $w['Element_Value'] ?></span>
                                 <img src="assets/elements/<?= htmlspecialchars($w['Element_Icon']) ?>" 
-                                     style="width: 18px; height: 18px; object-fit: contain;">
+                                     class="weapon-element-icon">
                             </div>
                         <?php else: ?>
-                            <span style="color: #444; font-family: monospace;">-</span>
+                            <span class="weapon-element-none">-</span>
                         <?php endif; ?>
                     </div>
 

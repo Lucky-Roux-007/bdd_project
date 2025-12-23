@@ -24,25 +24,25 @@ include 'includes/navbar.php';
             <a href="monsters.php" class="portal-card">
                 <img src="assets/icon_monster.png" alt="Monsters" class="portal-icon-img">
                 <h3>MONSTERS</h3>
-                <p style="color: #888;">Physiology, weaknesses, and drop rates.</p>
+                <p class="text-muted-inline">Physiology, weaknesses, and drop rates.</p>
             </a>
 
             <a href="armory.php" class="portal-card">
                 <img src="assets/icon_armory.png" alt="Armory" class="portal-icon-img">
                 <h3>ARMORY</h3>
-                <p style="color: #888;">Weapon trees, attack stats, and crafting recipes.</p>
+                <p class="text-muted-inline">Weapon trees, attack stats, and crafting recipes.</p>
             </a>
 
             <a href="habitats.php" class="portal-card">
                 <img src="assets/icon_map.png" alt="Locations" class="portal-icon-img">
                 <h3>LOCATIONS</h3>
-                <p style="color: #888;">Ecological maps, Shrine Ruins, and hunting grounds.</p>
+                <p class="text-muted-inline">Ecological maps, Shrine Ruins, and hunting grounds.</p>
             </a>
 
             <a href="species.php" class="portal-card">
                 <img src="assets/icon_book.png" alt="Species" class="portal-icon-img">
                 <h3>SPECIES</h3>
-                <p style="color: #888;">Biological classification (Wyverns, Elder Dragons, etc).</p>
+                <p class="text-muted-inline">Biological classification (Wyverns, Elder Dragons, etc).</p>
             </a>
 
         </div>

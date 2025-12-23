@@ -62,7 +62,7 @@ $elementsUsed = $stmtElements->fetchAll();
 </head>
 <body>
 
-    <div class="container" style="margin-top: 40px;">
+    <div class="container monster-details-wrapper">
         
         <div class="detail-header">
             <div style="display: flex; align-items: center; gap: 20px;">
@@ -70,10 +70,10 @@ $elementsUsed = $stmtElements->fetchAll();
                      class="detail-icon-large">
                 
                 <div>
-                    <div style="color: var(--gold-dim); font-family: monospace; letter-spacing: 2px;">
+                    <div class="text-muted-inline" style="font-family: monospace; letter-spacing: 2px;">
                         <?= htmlspecialchars($monster['Title']) ?>
                     </div>
-                    <h1 style="font-size: 3.5rem; margin-bottom: 0; line-height: 1;">
+                    <h1 class="codex-banner-h3" style="font-size: 3.5rem;">
                         <?= htmlspecialchars($monster['Name']) ?>
                     </h1>
                 </div>
@@ -122,12 +122,12 @@ $elementsUsed = $stmtElements->fetchAll();
                                 <img src="assets/elements/<?= htmlspecialchars($el['Icon'] ?? 'icon_question.png') ?>" 
                                      class="element-icon-small" 
                                      alt="<?= htmlspecialchars($el['Name']) ?>">
-                                <span style="font-weight: bold; color: #eee;"><?= htmlspecialchars($el['Name']) ?></span>
+                                <span class="monster-element-text"><?= htmlspecialchars($el['Name']) ?></span>
                             </div>
                         <?php endforeach; ?>
                         </div>
                     <?php else: ?>
-                        <p style="color: #666;">Non-elemental / Physical only.</p>
+                        <p class="text-muted-inline">Non-elemental / Physical only.</p>
                     <?php endif; ?>
                 </div>
 
@@ -140,12 +140,12 @@ $elementsUsed = $stmtElements->fetchAll();
                                 <img src="assets/elements/<?= htmlspecialchars($w['Icon'] ?? 'icon_question.png') ?>" 
                                      class="element-icon-small" 
                                      alt="<?= htmlspecialchars($w['Name']) ?>">
-                                <span style="font-weight: bold; color: #eee;"><?= htmlspecialchars($w['Name']) ?></span>
+                                <span class="monster-element-text"><?= htmlspecialchars($w['Name']) ?></span>
                             </div>
                         <?php endforeach; ?>
                         </div>
                     <?php else: ?>
-                        <p style="color: #666;">No major weaknesses recorded.</p>
+                        <p class="text-muted-inline">No major weaknesses recorded.</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -167,7 +167,7 @@ $elementsUsed = $stmtElements->fetchAll();
                             <td class="rarity-<?= $drop['Rarity'] ?>">
                                 <?= htmlspecialchars($drop['Name']) ?>
                             </td>
-                            <td style="color: #666;"><?= $drop['Rarity'] ?></td>
+                            <td class="text-muted-inline"><?= $drop['Rarity'] ?></td>
                             <td style="font-family: monospace; color: var(--text-main);">
                                 <?= number_format($drop['Drop_Rate'] * 100, 0) ?>%
                             </td>
@@ -176,7 +176,9 @@ $elementsUsed = $stmtElements->fetchAll();
                     </tbody>
                 </table>
                 <?php else: ?>
-                    <p style="color: #666; font-style: italic;">No drop data available for this monster.</p>
+                    <p class="crafting-recipe-none">
+                        No drop data available for this monster.
+                    </p>
                 <?php endif; ?>
             </div>
 

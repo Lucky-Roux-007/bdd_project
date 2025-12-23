@@ -36,15 +36,15 @@ $monsters = $stmt->fetchAll();
 </head>
 <body>
 
-    <div class="codex-banner" style="padding: 40px 20px; min-height: auto;">
-        <h1 style="font-size: 2.5rem;">MONSTER ECOLOGY</h1>
+    <div class="codex-banner codex-banner-sm">
+        <h1 class="codex-banner-h3">MONSTER ECOLOGY</h1>
         <p>Verified records of large monsters found in the New World.</p>
     </div>
 
     <div class="container">
         <div class="controls-bar">
-            <div style="color: var(--text-muted);">
-                Records Found: <span style="color: var(--gold);"><?= count($monsters) ?></span>
+            <div class="record-count">
+                Records Found: <span class="record-count-highlight"><?= count($monsters) ?></span>
             </div>
             <div class="sort-options">
                 SORT BY:
@@ -61,15 +61,15 @@ $monsters = $stmt->fetchAll();
                          alt="Icon" class="monster-icon">
 
                     <div style="flex-grow: 1;">
-                        <span class="rank-badge" style="position: static; float: right; margin-left: 10px;">
+                        <span class="rank-badge">
                             <?= htmlspecialchars($m['Quest_Star_Rank']) ?>
                         </span>
                         
-                        <h3 class="monster-name" style="border: none; margin-bottom: 2px;">
+                        <h3 class="monster-name" style="margin-bottom: 2px;">
                             <?= htmlspecialchars($m['Name']) ?>
                         </h3>
                         <div class="monster-title"><?= htmlspecialchars($m['Title']) ?></div>
-                        <div style="font-size: 0.8rem; color: var(--gold-dim); margin-top: 5px;">
+                        <div class="text-muted-inline" style="margin-top: 5px; font-size: 0.8rem;">
                             <?= htmlspecialchars($m['Species']) ?>
                         </div>
                     </div>

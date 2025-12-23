@@ -36,7 +36,7 @@ $residents = $stmtMonsters->fetchAll();
 </head>
 <body>
 
-    <div class="container" style="margin-top: 40px;">
+    <div class="container habitat-details-wrapper">
 
         <div class="detail-header">
             <div style="display: flex; align-items: center; gap: 20px;">
@@ -44,8 +44,8 @@ $residents = $stmtMonsters->fetchAll();
                      class="detail-icon-large" style="border-color: #eee;">
                 
                 <div>
-                    <div style="color: #888; font-family: monospace; letter-spacing: 2px;">LOCALE</div>
-                    <h1 style="font-size: 3.5rem; margin-bottom: 0; line-height: 1;">
+                    <div class="text-muted-inline" style="font-family: monospace; letter-spacing: 2px;">LOCALE</div>
+                    <h1 class="codex-banner-h3" style="font-size: 3.5rem;">
                         <?= htmlspecialchars($habitat['Name']) ?>
                     </h1>
                 </div>
@@ -57,14 +57,14 @@ $residents = $stmtMonsters->fetchAll();
             <div>
                 <div class="info-box">
                     <h3 class="section-title">ECOLOGICAL REPORT</h3>
-                    <p style="font-style: italic; color: #ccc; line-height: 1.8;">
+                    <p class="habitat-description-text">
                         "<?= nl2br(htmlspecialchars($habitat['Description'] ?? 'No data available for this region.')) ?>"
                     </p>
                 </div>
             </div>
 
             <div>
-                <h3 class="section-title">KNOWN INHABITANTS</h3>
+                <h3 class="section-title inhabitants-title">KNOWN INHABITANTS</h3>
                 
                 <?php if (count($residents) > 0): ?>
                     <div class="monster-grid" style="grid-template-columns: 1fr;"> 
@@ -74,10 +74,10 @@ $residents = $stmtMonsters->fetchAll();
                                      alt="Icon" class="monster-icon">
                                 
                                 <div style="flex-grow: 1;">
-                                    <span class="rank-badge" style="position: static; float: right;">
+                                    <span class="rank-badge">
                                         <?= htmlspecialchars($m['Quest_Star_Rank']) ?>
                                     </span>
-                                    <h3 class="monster-name" style="border: none; margin-bottom: 0;">
+                                    <h3 class="monster-name" style="margin-bottom: 0;">
                                         <?= htmlspecialchars($m['Name']) ?>
                                     </h3>
                                     <div class="monster-title"><?= htmlspecialchars($m['Title']) ?></div>
@@ -87,7 +87,7 @@ $residents = $stmtMonsters->fetchAll();
                         
                     </div>
                 <?php else: ?>
-                    <p style="color: #666;">No large monsters currently tracked in this region.</p>
+                    <p class="no-residents">No large monsters currently tracked in this region.</p>
                 <?php endif; ?>
             </div>
 
