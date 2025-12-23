@@ -91,7 +91,7 @@ $elementsUsed = $stmtElements->fetchAll();
             <div>
                 <div class="info-box">
                     <h3 class="section-title">PHYSIOLOGY</h3>
-                    <p><strong>Class:</strong> <?= htmlspecialchars($monster['Species']) ?></p>
+                    <p><strong>Species:</strong> <?= htmlspecialchars($monster['Species']) ?></p>
                     
                     <p>
                         <strong>Main Habitat:</strong> 
@@ -114,7 +114,7 @@ $elementsUsed = $stmtElements->fetchAll();
                 </div>
 
                 <div class="info-box">
-                    <h3 class="section-title">ELEMENTAL THREAT</h3>
+                    <h3 class="section-title">ELEMENTAL DAMAGE</h3>
                     <?php if ($elementsUsed): ?>
                         <div style="display: flex; flex-wrap: wrap;">
                         <?php foreach ($elementsUsed as $el): ?>

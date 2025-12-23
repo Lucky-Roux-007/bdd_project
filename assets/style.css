@@ -370,3 +370,59 @@ a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(197, 160, 89, 0.4); }
     color: var(--highlight);
     text-shadow: 0 0 5px rgba(197, 160, 89, 0.4);
 }
+
+/* --- ARMORY GRID LAYOUT --- */
+.armory-header {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 100px; /* The master grid definition */
+    gap: 10px;
+    padding: 10px 20px;
+    border-bottom: 2px solid #444;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.weapon-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 100px; /* Matches header exactly */
+    gap: 10px;
+    align-items: center;
+    background: #151515;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.weapon-row:hover {
+    background: #252525;
+    border-left: 3px solid var(--gold);
+    padding-left: 17px; /* Adjust padding to keep alignment */
+}
+
+/* Icons: Strict sizing, NO INVERT */
+.weapon-icon-tiny {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 10px;
+    /* filter: invert(1); REMOVED: Icons will show original colors */
+}
+
+/* Column Alignment Helpers */
+.col-right { text-align: right; }
+.col-center { text-align: center; }
+
+/* Text Colors */
+.stat-atk { color: #ccc; font-family: monospace; font-size: 1rem; }
+.stat-aff { color: #ccc; font-family: monospace; font-size: 1rem; }
+.stat-aff.positive { color: #ffaaaa; }
+.stat-ele { display: flex; align-items: center; justify-content: flex-end; gap: 5px; color: #fff; font-weight: bold; }
+
+/* Ensure Rarity Colors work on text */
+.rarity-1, .rarity-2, .rarity-3, .rarity-4 { color: var(--rare-4); }
+.rarity-5, .rarity-6, .rarity-7, .rarity-8 { color: var(--rare-6); }
+.rarity-9, .rarity-10, .rarity-11, .rarity-12 { color: var(--rare-10); text-shadow: 0 0 5px rgba(245, 215, 110, 0.3); }
