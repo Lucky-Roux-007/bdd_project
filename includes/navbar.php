@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="guild_card.php" class="nav-link" style="color: var(--gold);">
             👤 <?php echo htmlspecialchars($_SESSION['username']); ?>
         </a>
-        <a href="logout.php" class="nav-link" style="font-size: 0.8em; color: var(--crimson);">(Logout)</a>
+        <a href="login.php?logout=true" class="nav-link" style="font-size: 0.8em; color: var(--crimson);">(Logout)</a>
     <?php else: ?>
         <a href="login.php" class="nav-link">HUNTER LOGIN</a>
     <?php endif; ?>

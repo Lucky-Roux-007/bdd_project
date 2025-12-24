@@ -31,9 +31,9 @@ CREATE TABLE `Drops` (
   PRIMARY KEY (`Drop_ID`),
   KEY `Monster_ID` (`Monster_ID`),
   KEY `Item_ID` (`Item_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Item_ID`) REFERENCES `Item` (`Item_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
+ FOREIGN KEY (`Item_ID`) REFERENCES `Item` (`Item_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `Element` (
   `Icon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Element_ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `Habitat` (
   `Icon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Habitat_ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `Hunter` (
   `Hunter_Rank` varchar(20) DEFAULT 'LR 1',
   PRIMARY KEY (`Hunter_ID`),
   UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,9 +182,9 @@ CREATE TABLE `Hunter_Record` (
   PRIMARY KEY (`Record_ID`),
   UNIQUE KEY `Hunter_ID` (`Hunter_ID`,`Monster_ID`),
   KEY `Monster_ID` (`Monster_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Hunter_ID`) REFERENCES `Hunter` (`Hunter_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Hunter_ID`) REFERENCES `Hunter` (`Hunter_ID`),
+ FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `Item` (
   `Rank_Color` varchar(20) GENERATED ALWAYS AS (case when `Rarity` between 1 and 4 then 'blue' when `Rarity` between 5 and 9 then 'orange' when `Rarity` >= 10 then 'gold' else 'gray' end) VIRTUAL,
   PRIMARY KEY (`Item_ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,9 +267,9 @@ CREATE TABLE `Monster` (
   UNIQUE KEY `Name` (`Name`),
   KEY `Species_ID` (`Species_ID`),
   KEY `Habitat_ID` (`Habitat_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Species_ID`) REFERENCES `Species` (`Species_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Habitat_ID`) REFERENCES `Habitat` (`Habitat_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Species_ID`) REFERENCES `Species` (`Species_ID`),
+ FOREIGN KEY (`Habitat_ID`) REFERENCES `Habitat` (`Habitat_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,9 +297,9 @@ CREATE TABLE `Monster_Dmg_Element` (
   `Element_ID` int(11) DEFAULT NULL,
   KEY `Monster_ID` (`Monster_ID`),
   KEY `Element_ID` (`Element_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
+ FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -327,9 +327,9 @@ CREATE TABLE `Monster_Weakness` (
   `Element_ID` int(11) DEFAULT NULL,
   KEY `Monster_ID` (`Monster_ID`),
   KEY `Element_ID` (`Element_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Monster_ID`) REFERENCES `Monster` (`Monster_ID`),
+ FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `Species` (
   `Description` text DEFAULT NULL,
   PRIMARY KEY (`Species_ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,9 +409,9 @@ CREATE TABLE `Weapon` (
   PRIMARY KEY (`Weapon_ID`),
   KEY `Weapon_Type_ID` (`Weapon_Type_ID`),
   KEY `Element_ID` (`Element_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Weapon_Type_ID`) REFERENCES `Weapon_Type` (`Weapon_Type_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Weapon_Type_ID`) REFERENCES `Weapon_Type` (`Weapon_Type_ID`),
+ FOREIGN KEY (`Element_ID`) REFERENCES `Element` (`Element_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,9 +438,9 @@ CREATE TABLE `Weapon_Crafting` (
   `Quantity` int(11) NOT NULL,
   KEY `Weapon_ID` (`Weapon_ID`),
   KEY `Item_ID` (`Item_ID`),
-  CONSTRAINT `1` FOREIGN KEY (`Weapon_ID`) REFERENCES `Weapon` (`Weapon_ID`),
-  CONSTRAINT `2` FOREIGN KEY (`Item_ID`) REFERENCES `Item` (`Item_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+ FOREIGN KEY (`Weapon_ID`) REFERENCES `Weapon` (`Weapon_ID`),
+ FOREIGN KEY (`Item_ID`) REFERENCES `Item` (`Item_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -467,7 +467,7 @@ CREATE TABLE `Weapon_Type` (
   `Icon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Weapon_Type_ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
