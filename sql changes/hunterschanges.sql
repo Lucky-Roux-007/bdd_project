@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `hunters`
 --
 
-DROP TABLE IF EXISTS `hunters`;
-CREATE TABLE `hunters` (
+DROP TABLE IF EXISTS `Hunters`;
+CREATE TABLE `Hunters` (
   `Hunter_ID` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `hunters` (
 -- Dumping data for table `hunters`
 --
 
-INSERT INTO `hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`, `favorite_game`, `favorite_monster_id`, `profile_picture`, `rank_type`, `rank_level`, `palico_name`, `hunter_screenshot`, `favorite_weapon`) VALUES
+INSERT INTO `Hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`, `favorite_game`, `favorite_monster_id`, `profile_picture`, `rank_type`, `rank_level`, `palico_name`, `hunter_screenshot`, `favorite_weapon`) VALUES
 (1, 'Zentai', '$2y$10$mO0YCXsasNgyThpaQXpXKeGtnkzZeNWcNfPv0bpk/rzCSRuayCX/a', 'Novice', '2025-12-24 17:26:36', 'Monster Hunter', NULL, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
 (2, 'Zentai_Kun', '$2y$10$uW8PO43MewwBExQdQvW2He.QgSd9a0Bj7xLTG/hwGHacZpS0BzVLi', 'Novice', '2025-12-24 17:28:20', 'Monster Hunter', NULL, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
 (3, 'ZentaiZeppeli', '$2y$10$jcAiviF8SOh/pvnTZ9ueDeKx4Ri0zOmjFZp4DrrcLCaLbsVw0DuwG', 'Hunter Rank 74', '2025-12-24 17:46:39', 'MH World: Iceborne', 9, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
@@ -61,7 +61,7 @@ INSERT INTO `hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`
 --
 -- Indexes for table `hunters`
 --
-ALTER TABLE `hunters`
+ALTER TABLE `Hunters`
   ADD PRIMARY KEY (`Hunter_ID`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `fk_fav_monster` (`favorite_monster_id`);
@@ -73,7 +73,7 @@ ALTER TABLE `hunters`
 --
 -- AUTO_INCREMENT for table `hunters`
 --
-ALTER TABLE `hunters`
+ALTER TABLE `Hunters`
   MODIFY `Hunter_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -83,8 +83,8 @@ ALTER TABLE `hunters`
 --
 -- Constraints for table `hunters`
 --
-ALTER TABLE `hunters`
-  ADD CONSTRAINT `fk_fav_monster` FOREIGN KEY (`favorite_monster_id`) REFERENCES `monster` (`Monster_ID`);
+ALTER TABLE `Hunters`
+  ADD CONSTRAINT `fk_fav_monster` FOREIGN KEY (`favorite_monster_id`) REFERENCES `Monster` (`Monster_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

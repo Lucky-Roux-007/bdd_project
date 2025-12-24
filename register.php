@@ -14,16 +14,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fav_weapon = $_POST['favorite_weapon'];
     $palico_name = trim($_POST['palico_name']);
 
-    $profile_pic = "default_hunter.png"; 
-    
+    $profile_pic = "default_hunter.png";
+
     if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
-        $upload_dir = 'assets/uploads/';
-        $file_ext = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
-        $new_filename = "hunter_" . preg_replace('/[^a-zA-Z0-9]/', '', $username) . "_" . time() . "." . $file_ext;
-        
-        if (in_array($file_ext, ['jpg', 'jpeg', 'png', 'gif'])) {
-            if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $upload_dir . $new_filename)) {
-                $profile_pic = $new_filename;
+        // Prefer relative path so it works on XAMPP and typical setups, but fall back to __DIR__ if needed
+        $rel_dir = 'assets/uploads/';
+        if (!is_dir($rel_dir)) { @mkdir($rel_dir, 0755, true); }
+        $upload_dir = $rel_dir;
+        if (!is_writable($upload_dir)) {
+            $upload_dir = __DIR__ . '/assets/uploads/';
+            if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
+        }
+
+        if (!is_writable($upload_dir)) {
+            error_log('Upload directory not writable (relative+fallback): ' . $rel_dir . ' / ' . $upload_dir);
+        } else {
+            $file_ext = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
+            $new_filename = "hunter_" . preg_replace('/[^a-zA-Z0-9]/', '', $username) . "_" . time() . "." . $file_ext;
+            if (in_array($file_ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+                $target = $upload_dir . $new_filename;
+                if (@move_uploaded_file($_FILES['profile_pic']['tmp_name'], $target)) {
+                    $profile_pic = $new_filename;
+                } else {
+                    error_log('move_uploaded_file failed for: ' . $target);
+                }
             }
         }
     }

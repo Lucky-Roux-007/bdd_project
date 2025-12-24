@@ -22,10 +22,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     function handleUpload($fileInputName, $prefix, $userId) {
         if (isset($_FILES[$fileInputName]) && $_FILES[$fileInputName]['error'] == 0) {
+            // Try relative path first for portability (XAMPP/Windows), then fallback to absolute
+            $rel_dir = 'assets/uploads/';
+            if (!is_dir($rel_dir)) { @mkdir($rel_dir, 0755, true); }
+            $upload_dir = $rel_dir;
+            if (!is_writable($upload_dir)) {
+                $upload_dir = __DIR__ . '/assets/uploads/';
+                if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
+            }
+            if (!is_writable($upload_dir)) { error_log('Upload dir not writable: ' . $rel_dir . ' / ' . $upload_dir); return false; }
             $ext = strtolower(pathinfo($_FILES[$fileInputName]['name'], PATHINFO_EXTENSION));
             if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
                 $newName = $prefix . "_" . $userId . "_" . time() . "." . $ext;
-                if (move_uploaded_file($_FILES[$fileInputName]['tmp_name'], "assets/uploads/" . $newName)) { return $newName; }
+                $target = $upload_dir . $newName;
+                if (@move_uploaded_file($_FILES[$fileInputName]['tmp_name'], $target)) { return $newName; }
+                error_log('move_uploaded_file failed for: ' . $target);
             }
         }
         return false;
