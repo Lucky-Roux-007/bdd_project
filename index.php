@@ -12,13 +12,12 @@ include 'includes/navbar.php';
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-
-    <div class="codex-banner">
-        <h1>HUNTER CODEX</h1>
-        <p>The comprehensive database of the New World. Authorized access for Guild Hunters only.</p>
-    </div>
-
+            <div class="codex-banner codex-banner-sm">
+                <h1 class="codex-banner-h3">HUNTER CODEX</h1>
+                <p>The comprehensive database of the New World. Authorized access for Guild Hunters only.</p>
+            </div>
     <div class="container">
+
         <div class="portal-grid">
             
             <a href="monsters.php" class="portal-card">

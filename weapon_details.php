@@ -50,7 +50,7 @@ $materials = $stmtMats->fetchAll();
         <div class="detail-header">
             <div style="display: flex; align-items: center; gap: 20px;">
                 <img src="assets/weapons/<?= htmlspecialchars($weapon['Type_Icon'] ?? 'icon_armory.png') ?>" 
-                     style="width: 80px; height: 80px; object-fit: contain; border: 1px solid var(--gold); padding: 10px; background: #111; border-radius: 4px;">
+                     style="width: 80px; height: 80px; object-fit: contain; border: 1px solid var(--gold); padding: 10px; background: #111; border-radius: var(--radius-sm);">
                 
                 <div>
                     <div class="text-muted-inline" style="font-family: monospace; letter-spacing: 2px;">
