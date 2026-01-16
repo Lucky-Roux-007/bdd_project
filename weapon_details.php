@@ -89,9 +89,9 @@ $materials = $stmtMats->fetchAll();
                         <div>
                             <span class="weapon-stat-label">Element</span><br>
                             <?php if ($weapon['Element_ID']): ?>
-                                <div class="monster-element-container">
-                                    <img src="assets/elements/<?= htmlspecialchars($weapon['Element_Icon']) ?>" class="monster-element-img">
-                                    <span class="monster-element-text"><?= $weapon['Element_Name'] ?> <?= $weapon['Element_Value'] ?></span>
+                                <div class="weakness-badge" style="border-color: var(--gold); margin-top: 8px;">
+                                    <img src="assets/elements/<?= htmlspecialchars($weapon['Element_Icon']) ?>" class="element-icon-small" alt="<?= htmlspecialchars($weapon['Element_Name']) ?>">
+                                    <span class="monster-element-text"><?= htmlspecialchars($weapon['Element_Name']) ?> <?= $weapon['Element_Value'] ?></span>
                                 </div>
                             <?php else: ?>
                                 <span class="weapon-none-element">None</span>
