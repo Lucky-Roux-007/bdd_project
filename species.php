@@ -1,4 +1,4 @@
-é<?php
+<?php
 session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';

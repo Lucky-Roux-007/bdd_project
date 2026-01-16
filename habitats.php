@@ -23,7 +23,7 @@ $locations = $stmt->fetchAll();
 
     <div class="habitat-grid">
         <?php foreach ($locations as $loc): ?>
-            <div class="habitat-item"
+            <a href="habitat_details.php?id=<?= $loc['Habitat_ID'] ?>" class="habitat-item"
                  onmouseover="this.style.transform='scale(1.03)'"
                  onmouseout="this.style.transform='scale(1)'">
                 
@@ -32,7 +32,7 @@ $locations = $stmt->fetchAll();
                      class="habitat-item-image">
                 
                 <h3 class="habitat-item-title"><?= htmlspecialchars($loc['Name']) ?></h3>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 </div>
