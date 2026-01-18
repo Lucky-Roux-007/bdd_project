@@ -17,39 +17,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profile_pic = "default_hunter.png";
 
     if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
-        // Prefer relative path so it works on XAMPP and typical setups, but fall back to __DIR__ if needed
-        $rel_dir = 'assets/uploads/';
-        if (!is_dir($rel_dir)) { @mkdir($rel_dir, 0755, true); }
-        $upload_dir = $rel_dir;
+        // Use absolute path first for Docker/server environments, but also support relative paths
+        $upload_dir = __DIR__ . '/assets/uploads/';
+        if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
         if (!is_writable($upload_dir)) {
-            $upload_dir = __DIR__ . '/assets/uploads/';
+            $upload_dir = 'assets/uploads/';
             if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
         }
 
         if (!is_writable($upload_dir)) {
-            error_log('Upload directory not writable (relative+fallback): ' . $rel_dir . ' / ' . $upload_dir);
+            error_log('Upload directory not writable: ' . $upload_dir);
         } else {
             $file_ext = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
-            $new_filename = "hunter_" . preg_replace('/[^a-zA-Z0-9]/', '', $username) . "_" . time() . "." . $file_ext;
-            if (in_array($file_ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+            if (!in_array($file_ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+                error_log('Invalid file extension: ' . $file_ext);
+            } else {
+                $new_filename = "hunter_" . preg_replace('/[^a-zA-Z0-9]/', '', $username) . "_" . time() . "." . $file_ext;
                 $target = $upload_dir . $new_filename;
                 if (@move_uploaded_file($_FILES['profile_pic']['tmp_name'], $target)) {
                     $profile_pic = $new_filename;
+                    error_log('Successfully uploaded: ' . $new_filename . ' to ' . $target);
                 } else {
-                    error_log('move_uploaded_file failed for: ' . $target);
+                    error_log('move_uploaded_file failed. From: ' . $_FILES['profile_pic']['tmp_name'] . ' To: ' . $target);
+                    // Check permissions
+                    error_log('Is dir writable: ' . (is_writable($upload_dir) ? 'yes' : 'no'));
                 }
             }
         }
     }
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $rank_display = "$rank_type $rank_level"; // For the old 'rank' column
 
-    $sql = "INSERT INTO Hunters (username, password, rank_type, rank_level, favorite_game, favorite_monster_id, favorite_weapon, palico_name, profile_picture) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO Hunters (username, password, rank, rank_type, rank_level, favorite_game, favorite_monster_id, favorite_weapon, palico_name, profile_picture) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
     
     try {
-        if ($stmt->execute([$username, $hashed_password, $rank_type, $rank_level, $fav_game, $fav_monster, $fav_weapon, $palico_name, $profile_pic])) {
+        if ($stmt->execute([$username, $hashed_password, $rank_display, $rank_type, $rank_level, $fav_game, $fav_monster, $fav_weapon, $palico_name, $profile_pic])) {
             header("Location: login.php"); 
             exit();
         }

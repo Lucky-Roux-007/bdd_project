@@ -22,12 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     function handleUpload($fileInputName, $prefix, $userId) {
         if (isset($_FILES[$fileInputName]) && $_FILES[$fileInputName]['error'] == 0) {
-            // Try relative path first for portability (XAMPP/Windows), then fallback to absolute
-            $rel_dir = 'assets/uploads/';
-            if (!is_dir($rel_dir)) { @mkdir($rel_dir, 0755, true); }
-            $upload_dir = $rel_dir;
+            // Use absolute path first for Docker/server environments, but also support relative paths
+            $upload_dir = __DIR__ . '/assets/uploads/';
+            if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
             if (!is_writable($upload_dir)) {
-                $upload_dir = __DIR__ . '/assets/uploads/';
+                $upload_dir = 'assets/uploads/';
                 if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
             }
             if (!is_writable($upload_dir)) { error_log('Upload dir not writable: ' . $rel_dir . ' / ' . $upload_dir); return false; }
