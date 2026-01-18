@@ -91,7 +91,11 @@ $elementsUsed = $stmtElements->fetchAll();
             <div>
                 <div class="info-box">
                     <h3 class="section-title">PHYSIOLOGY</h3>
-                    <p><strong>Species:</strong> <?= htmlspecialchars($monster['Species']) ?></p>
+                    <p><strong>Species:</strong> 
+                    <a href="species_details.php?id=<?= $monster['Species_ID'] ?>" class="text-link">
+                      <?= htmlspecialchars($monster['Species']) ?>
+                     </a>
+                    </p>
                     
                     <p>
                         <strong>Main Habitat:</strong> 
