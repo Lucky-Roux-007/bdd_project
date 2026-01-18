@@ -31,7 +31,11 @@ $species = $stmt->fetchAll();
         <?php foreach ($species as $s): ?>
             <div class="species-item">
                 <div class="species-info">
-                    <h2 class="species-name"><?= htmlspecialchars($s['Name']) ?></h2>
+                    <h2 class="species-name">
+                    <a href="species_details.php?id=<?= $s['Species_ID'] ?>">
+                    <?= htmlspecialchars($s['Name']) ?>
+                    </a>   
+                    </h2>
                     <p class="species-description"><?= htmlspecialchars($s['Description']) ?></p>
                 </div>
                 <div class="species-count-section">
