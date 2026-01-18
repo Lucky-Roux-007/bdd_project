@@ -1,3 +1,6 @@
 .vscode/settings.json
 .devcontainer/devcontainer.json
 query_test.sql
+db.php
+docker-compose.yaml
+Dockerfile
