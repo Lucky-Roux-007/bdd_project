@@ -14,7 +14,7 @@ $stmt = $pdo->query("
     FROM Weapon W
     LEFT JOIN Element E ON W.Element_ID = E.Element_ID
     LEFT JOIN Weapon_Type WT ON W.Weapon_Type_ID = WT.Weapon_Type_ID
-    ORDER BY WT.Name ASC, W.Rarity DESC
+    ORDER BY W.Rarity DESC, WT.Name ASC
 ");
 $weapons = $stmt->fetchAll();
 ?>
