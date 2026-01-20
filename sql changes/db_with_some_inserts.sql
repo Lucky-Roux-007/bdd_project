@@ -1,471 +1,20 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jan 19, 2026 at 10:53 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `monster_hunter_db`
+-- Only contains data differences from setup.sql
 --
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `drops`
+-- Dumping data for table `Hunters`
 --
 
-CREATE TABLE `drops` (
-  `Drop_ID` int(11) NOT NULL,
-  `Monster_ID` int(11) DEFAULT NULL,
-  `Item_ID` int(11) DEFAULT NULL,
-  `Drop_Rate` decimal(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `drops`
---
-
-INSERT INTO `drops` (`Drop_ID`, `Monster_ID`, `Item_ID`, `Drop_Rate`) VALUES
-(1, 1, 1, 0.24),
-(2, 1, 2, 0.26),
-(3, 1, 3, 0.20),
-(4, 1, 4, 0.13),
-(5, 1, 8, 0.03),
-(6, 1, 9, 0.14),
-(7, 1, 10, 0.24),
-(8, 1, 11, 0.19),
-(9, 1, 12, 0.13),
-(10, 1, 16, 0.02),
-(11, 2, 17, 0.35),
-(12, 2, 18, 0.25),
-(13, 2, 20, 0.20),
-(14, 2, 19, 0.15),
-(15, 2, 21, 0.32),
-(16, 2, 22, 0.24),
-(17, 2, 24, 0.18),
-(18, 2, 23, 0.15),
-(19, 3, 25, 0.32),
-(20, 3, 26, 0.24),
-(21, 3, 28, 0.18),
-(22, 3, 27, 0.12),
-(23, 3, 29, 0.30),
-(24, 3, 30, 0.22),
-(25, 3, 32, 0.15),
-(26, 3, 31, 0.12),
-(27, 4, 33, 0.30),
-(28, 4, 34, 0.22),
-(29, 4, 36, 0.15),
-(30, 4, 37, 0.12),
-(31, 4, 35, 0.10),
-(32, 4, 38, 0.28),
-(33, 4, 41, 0.20),
-(34, 4, 39, 0.18),
-(35, 4, 40, 0.12),
-(36, 4, 42, 0.08),
-(37, 5, 43, 0.28),
-(38, 5, 46, 0.20),
-(39, 5, 44, 0.18),
-(40, 5, 47, 0.12),
-(41, 5, 45, 0.15),
-(42, 5, 48, 0.05),
-(43, 5, 49, 0.28),
-(44, 5, 50, 0.20),
-(45, 5, 51, 0.15),
-(46, 5, 52, 0.10),
-(47, 5, 53, 0.12),
-(48, 6, 54, 0.30),
-(49, 6, 55, 0.22),
-(50, 6, 57, 0.18),
-(51, 6, 56, 0.15),
-(52, 6, 48, 0.05),
-(53, 6, 58, 0.28),
-(54, 6, 61, 0.20),
-(55, 6, 59, 0.15),
-(56, 6, 60, 0.15),
-(57, 7, 62, 0.28),
-(58, 7, 63, 0.18),
-(59, 7, 66, 0.15),
-(60, 7, 65, 0.12),
-(61, 7, 64, 0.10),
-(62, 7, 67, 0.28),
-(63, 7, 68, 0.20),
-(64, 7, 69, 0.15),
-(65, 7, 70, 0.12),
-(66, 7, 71, 0.10),
-(67, 8, 72, 0.28),
-(68, 8, 73, 0.18),
-(69, 8, 74, 0.15),
-(70, 8, 75, 0.12),
-(71, 8, 76, 0.10),
-(72, 8, 77, 0.05),
-(73, 8, 78, 0.03),
-(74, 8, 79, 0.15),
-(75, 8, 80, 0.28),
-(76, 8, 81, 0.20),
-(77, 8, 82, 0.15),
-(78, 8, 83, 0.12),
-(79, 8, 84, 0.10),
-(80, 8, 85, 0.03),
-(81, 8, 86, 0.15),
-(82, 9, 87, 0.25),
-(83, 9, 88, 0.20),
-(84, 9, 89, 0.15),
-(85, 9, 90, 0.12),
-(86, 9, 91, 0.10),
-(87, 9, 92, 0.08),
-(88, 9, 94, 0.05),
-(89, 9, 95, 0.02),
-(90, 9, 79, 0.15),
-(91, 9, 97, 0.28),
-(92, 9, 98, 0.20),
-(93, 9, 99, 0.15),
-(94, 9, 100, 0.12),
-(95, 9, 101, 0.03),
-(96, 9, 86, 0.15),
-(97, 10, 103, 0.25),
-(98, 10, 104, 0.20),
-(99, 10, 105, 0.15),
-(100, 10, 106, 0.12),
-(101, 10, 108, 0.10),
-(102, 10, 109, 0.08),
-(103, 10, 110, 0.05),
-(104, 10, 48, 0.03),
-(105, 10, 112, 0.28),
-(106, 10, 113, 0.20),
-(107, 10, 114, 0.15),
-(108, 10, 116, 0.12),
-(109, 10, 115, 0.08),
-(110, 11, 117, 0.28),
-(111, 11, 118, 0.20),
-(112, 11, 120, 0.18),
-(113, 11, 121, 0.15),
-(114, 11, 119, 0.12),
-(115, 11, 122, 0.28),
-(116, 11, 123, 0.20),
-(117, 11, 124, 0.18),
-(118, 11, 125, 0.15),
-(119, 12, 126, 0.28),
-(120, 12, 127, 0.18),
-(121, 12, 128, 0.15),
-(122, 12, 129, 0.12),
-(123, 12, 130, 0.10),
-(124, 12, 131, 0.05),
-(125, 12, 132, 0.03),
-(126, 12, 133, 0.15),
-(127, 12, 134, 0.28),
-(128, 12, 135, 0.20),
-(129, 12, 136, 0.15),
-(130, 12, 137, 0.03),
-(131, 12, 138, 0.15),
-(132, 13, 139, 0.30),
-(133, 13, 140, 0.20),
-(134, 13, 143, 0.15),
-(135, 13, 141, 0.12),
-(136, 13, 142, 0.10),
-(137, 13, 144, 0.05),
-(138, 13, 145, 0.03),
-(139, 13, 146, 0.28),
-(140, 13, 147, 0.20),
-(141, 13, 149, 0.15),
-(142, 13, 150, 0.12),
-(143, 13, 151, 0.03),
-(144, 14, 152, 0.28),
-(145, 14, 153, 0.20),
-(146, 14, 155, 0.15),
-(147, 14, 154, 0.10),
-(148, 14, 156, 0.28),
-(149, 14, 159, 0.20),
-(150, 14, 157, 0.15),
-(151, 14, 158, 0.10),
-(152, 15, 160, 0.28),
-(153, 15, 161, 0.20),
-(154, 15, 162, 0.15),
-(155, 15, 163, 0.12),
-(156, 15, 164, 0.10),
-(157, 15, 165, 0.08),
-(158, 15, 166, 0.03),
-(159, 16, 167, 0.32),
-(160, 16, 168, 0.22),
-(161, 16, 169, 0.15),
-(162, 16, 170, 0.12),
-(163, 17, 171, 0.30),
-(164, 17, 172, 0.25),
-(165, 17, 174, 0.18),
-(166, 17, 173, 0.15),
-(167, 18, 175, 0.28),
-(168, 18, 176, 0.20),
-(169, 18, 177, 0.15),
-(170, 18, 178, 0.12),
-(171, 18, 179, 0.10),
-(172, 19, 180, 0.28),
-(173, 19, 181, 0.20),
-(174, 19, 183, 0.15),
-(175, 19, 182, 0.12),
-(176, 19, 184, 0.10),
-(177, 19, 185, 0.08),
-(178, 19, 186, 0.03),
-(179, 20, 187, 0.28),
-(180, 20, 188, 0.20),
-(181, 20, 189, 0.15),
-(182, 20, 190, 0.12),
-(183, 20, 191, 0.10),
-(184, 20, 192, 0.08),
-(185, 20, 193, 0.03),
-(186, 21, 194, 0.28),
-(187, 21, 195, 0.20),
-(188, 21, 197, 0.15),
-(189, 21, 196, 0.12),
-(190, 21, 198, 0.10),
-(191, 21, 199, 0.03),
-(192, 22, 200, 0.28),
-(193, 22, 201, 0.20),
-(194, 22, 202, 0.15),
-(195, 22, 203, 0.12),
-(196, 22, 204, 0.08),
-(197, 22, 205, 0.03),
-(198, 23, 206, 0.28),
-(199, 23, 208, 0.20),
-(200, 23, 207, 0.15),
-(201, 23, 209, 0.12),
-(202, 23, 210, 0.10),
-(203, 23, 211, 0.03),
-(204, 24, 213, 0.28),
-(205, 24, 216, 0.20),
-(206, 24, 214, 0.15),
-(207, 24, 212, 0.12),
-(208, 24, 215, 0.10),
-(209, 24, 217, 0.05),
-(210, 25, 218, 0.30),
-(211, 25, 219, 0.22),
-(212, 25, 220, 0.15),
-(213, 25, 222, 0.12),
-(214, 25, 223, 0.10),
-(215, 25, 221, 0.08),
-(216, 25, 224, 0.03),
-(217, 25, 225, 0.28),
-(218, 25, 226, 0.20),
-(219, 25, 227, 0.15),
-(220, 25, 229, 0.15),
-(221, 25, 230, 0.10),
-(222, 25, 228, 0.08),
-(223, 25, 231, 0.03),
-(224, 26, 232, 0.28),
-(225, 26, 233, 0.20),
-(226, 26, 234, 0.15),
-(227, 26, 237, 0.12),
-(228, 26, 239, 0.10),
-(229, 26, 238, 0.10),
-(230, 26, 236, 0.08),
-(231, 26, 240, 0.03),
-(232, 26, 241, 0.28),
-(233, 26, 242, 0.20),
-(234, 26, 244, 0.15),
-(235, 26, 243, 0.15),
-(236, 26, 246, 0.12),
-(237, 26, 247, 0.10),
-(238, 26, 245, 0.08),
-(239, 26, 231, 0.03),
-(240, 27, 248, 0.28),
-(241, 27, 249, 0.20),
-(242, 27, 250, 0.15),
-(243, 27, 251, 0.12),
-(244, 27, 253, 0.10),
-(245, 27, 252, 0.08),
-(246, 27, 254, 0.03),
-(247, 27, 255, 0.28),
-(248, 27, 256, 0.20),
-(249, 27, 257, 0.15),
-(250, 27, 259, 0.12),
-(251, 27, 260, 0.10),
-(252, 27, 258, 0.08),
-(253, 27, 231, 0.03),
-(254, 28, 261, 0.25),
-(255, 28, 262, 0.15),
-(256, 28, 264, 0.15),
-(257, 28, 265, 0.12),
-(258, 28, 267, 0.10),
-(259, 28, 266, 0.08),
-(260, 28, 263, 0.03),
-(261, 28, 268, 0.28),
-(262, 28, 269, 0.20),
-(263, 28, 270, 0.18),
-(264, 28, 231, 0.03),
-(265, 29, 271, 0.28),
-(266, 29, 274, 0.20),
-(267, 29, 272, 0.15),
-(268, 29, 273, 0.10),
-(269, 29, 275, 0.28),
-(270, 29, 276, 0.20),
-(271, 29, 277, 0.15),
-(272, 29, 231, 0.03),
-(273, 33, 278, 0.28),
-(274, 33, 280, 0.18),
-(275, 33, 279, 0.15),
-(276, 33, 281, 0.12),
-(277, 33, 282, 0.10),
-(278, 33, 283, 0.02),
-(279, 33, 231, 0.03),
-(280, 32, 284, 0.30),
-(281, 32, 285, 0.15),
-(282, 32, 287, 0.18),
-(283, 32, 288, 0.12),
-(284, 32, 286, 0.10),
-(285, 32, 289, 0.02),
-(286, 32, 231, 0.03),
-(287, 34, 290, 0.30),
-(288, 34, 291, 0.20),
-(289, 34, 292, 0.18),
-(290, 34, 293, 0.15),
-(291, 34, 231, 0.03),
-(292, 31, 294, 0.35),
-(293, 31, 297, 0.25),
-(294, 31, 298, 0.20),
-(295, 31, 295, 0.15),
-(296, 31, 296, 0.05),
-(297, 31, 299, 0.03),
-(298, 35, 301, 0.28),
-(299, 35, 300, 0.20),
-(300, 35, 302, 0.15),
-(301, 35, 303, 0.12),
-(302, 35, 304, 0.10),
-(303, 35, 305, 0.05),
-(304, 35, 231, 0.03),
-(305, 36, 307, 0.25),
-(306, 36, 308, 0.15),
-(307, 36, 306, 0.10),
-(308, 36, 309, 0.03),
-(309, 36, 231, 0.03),
-(310, 37, 310, 0.28),
-(311, 37, 314, 0.20),
-(312, 37, 311, 0.15),
-(313, 37, 312, 0.12),
-(314, 37, 313, 0.10),
-(315, 37, 315, 0.05),
-(316, 38, 316, 0.28),
-(317, 38, 317, 0.15),
-(318, 38, 318, 0.15),
-(319, 38, 319, 0.10),
-(320, 38, 320, 0.10),
-(321, 38, 321, 0.05),
-(322, 39, 322, 0.28),
-(323, 39, 325, 0.20),
-(324, 39, 323, 0.15),
-(325, 39, 324, 0.12),
-(326, 39, 326, 0.07);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `element`
---
-
-CREATE TABLE `element` (
-  `Element_ID` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Icon` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `element`
---
-
-INSERT INTO `element` (`Element_ID`, `Name`, `Icon`) VALUES
-(1, 'Fire', 'Fire.png'),
-(2, 'Water', 'Water.png'),
-(3, 'Thunder', 'Thunder.png'),
-(4, 'Ice', 'Ice.png'),
-(5, 'Dragon', 'Dragon.png'),
-(6, 'Poison', 'Poison.png'),
-(7, 'Sleep', 'Sleep.png'),
-(8, 'Paralysis', 'Paralysis.png'),
-(9, 'Blast', 'Blast.png'),
-(10, 'Stun', 'Stun.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `habitat`
---
-
-CREATE TABLE `habitat` (
-  `Habitat_ID` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `Description` text DEFAULT NULL,
-  `Icon` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `habitat`
---
-
-INSERT INTO `habitat` (`Habitat_ID`, `Name`, `Description`, `Icon`) VALUES
-(1, 'Ancient Forest', 'A vast, complex forest ecosystem with a giant tree at its center.', 'loc_ancient_forest.png'),
-(2, 'Wildspire Waste', 'A mix of arid desert and swampy marshlands, home to diverse life.', 'loc_wildspire_waste.png'),
-(3, 'Coral Highlands', 'A mysterious mountaintop that resembles an underwater reef, but on land.', 'loc_coral_highlands.png'),
-(4, 'Rotten Vale', 'A graveyard for monsters where decomposition creates a toxic, effluvial environment.', 'loc_rotten_vale.png'),
-(5, 'Elders Recess', 'A volcanic region filled with crystallized energy, attracting Elder Dragons.', 'loc_elders_recess.png'),
-(6, 'Hoarfrost Reach', 'A frozen continent of eternal snow and ice.', 'loc_hoarfrost_reach.png'),
-(7, 'Guiding Lands', 'A mysterious island amalgamating features of all other ecosystems.', 'loc_guiding_lands.png'),
-(8, 'Shrine Ruins', 'A desolate mountain shrine reclaimed by nature.', 'loc_shrine_ruins.png'),
-(9, 'Frost Islands', 'A gigantic dragon skeleton lies in the center of this frozen archipelago.', 'loc_frost_islands.png'),
-(10, 'Sandy Plains', 'A desolate wasteland with searing days and freezing nights.', 'loc_sandy_plains.png'),
-(11, 'Flooded Forest', 'A dense jungle submerged in water, filled with ancient ruins.', 'loc_flooded_forest.png'),
-(12, 'Lava Caverns', 'A volcanic network of caves flowing with magma and water.', 'loc_lava_caverns.png'),
-(13, 'Jungle', 'A classic seaside jungle with dense vegetation and underground caves.', 'loc_jungle.png'),
-(14, 'Citadel', 'An abandoned fortress surrounded by frozen peaks and toxic forests.', 'loc_citadel.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hunter`
---
-
-CREATE TABLE `hunter` (
-  `Hunter_ID` int(11) NOT NULL,
-  `Username` varchar(50) NOT NULL,
-  `Hunter_Rank` varchar(20) DEFAULT 'LR 1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hunters`
---
-
-CREATE TABLE `hunters` (
-  `Hunter_ID` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `rank` varchar(20) DEFAULT 'Novice',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `favorite_game` varchar(50) DEFAULT 'Monster Hunter',
-  `favorite_monster_id` int(11) DEFAULT NULL,
-  `profile_picture` varchar(255) DEFAULT 'default_hunter.png',
-  `rank_type` varchar(5) DEFAULT NULL,
-  `rank_level` int(11) DEFAULT 1,
-  `palico_name` varchar(50) DEFAULT 'Palico',
-  `hunter_screenshot` varchar(255) DEFAULT NULL,
-  `favorite_weapon` varchar(50) DEFAULT 'Great Sword'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `hunters`
---
-
-INSERT INTO `hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`, `favorite_game`, `favorite_monster_id`, `profile_picture`, `rank_type`, `rank_level`, `palico_name`, `hunter_screenshot`, `favorite_weapon`) VALUES
+INSERT INTO `Hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`, `favorite_game`, `favorite_monster_id`, `profile_picture`, `rank_type`, `rank_level`, `palico_name`, `hunter_screenshot`, `favorite_weapon`) VALUES
 (1, 'Zentai', '$2y$10$mO0YCXsasNgyThpaQXpXKeGtnkzZeNWcNfPv0bpk/rzCSRuayCX/a', 'Novice', '2025-12-24 17:26:36', 'Monster Hunter', NULL, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
 (2, 'Zentai_Kun', '$2y$10$uW8PO43MewwBExQdQvW2He.QgSd9a0Bj7xLTG/hwGHacZpS0BzVLi', 'Novice', '2025-12-24 17:28:20', 'Monster Hunter', NULL, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
 (3, 'ZentaiZeppeli', '$2y$10$jcAiviF8SOh/pvnTZ9ueDeKx4Ri0zOmjFZp4DrrcLCaLbsVw0DuwG', 'Hunter Rank 74', '2025-12-24 17:46:39', 'MH World: Iceborne', 9, 'default_hunter.png', NULL, 1, 'Palico', NULL, 'Great Sword'),
@@ -473,39 +22,11 @@ INSERT INTO `hunters` (`Hunter_ID`, `username`, `password`, `rank`, `created_at`
 (5, 'ZentaiFist', '$2y$10$nIFLxS0rI4rHIBa3k/G0fOJwejVyjBTfSv1qe9Ph0/gK0XUwbWvka', 'Novice', '2026-01-18 15:55:43', 'MH World: Iceborne', 38, 'hunter_ZentaiFist_1768751743.jpg', 'MR', 25, 'Miso', NULL, 'Dual Blades'),
 (6, 'ZentaiTest', '$2y$10$gmEig1dhMcR6dzahCocmLeCcEuftPM.SEYfqp5dXP1oIjHomeA5na', 'Novice', '2026-01-18 16:10:26', 'MH Wilds', 38, 'hunter_ZentaiTest_1768752625.jpg', 'MR', 25, 'Miso', NULL, 'Dual Blades');
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `hunter_record`
+-- Data for table `Item`
 --
 
-CREATE TABLE `hunter_record` (
-  `Record_ID` int(11) NOT NULL,
-  `Hunter_ID` int(11) DEFAULT NULL,
-  `Monster_ID` int(11) DEFAULT NULL,
-  `Kills` int(11) DEFAULT 0,
-  `Captures` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item`
---
-
-CREATE TABLE `item` (
-  `Item_ID` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `Rarity` int(11) NOT NULL DEFAULT 1,
-  `Rank_Tier` varchar(20) GENERATED ALWAYS AS (case when `Rarity` between 1 and 4 then 'Low Rank' when `Rarity` between 5 and 9 then 'High Rank' when `Rarity` >= 10 then 'Master Rank' else 'Unknown' end) VIRTUAL,
-  `Rank_Color` varchar(20) GENERATED ALWAYS AS (case when `Rarity` between 1 and 4 then 'blue' when `Rarity` between 5 and 9 then 'orange' when `Rarity` >= 10 then 'gold' else 'gray' end) VIRTUAL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `item`
---
-
-INSERT INTO `item` (`Item_ID`, `Name`, `Rarity`) VALUES
+INSERT INTO `Item` (`Item_ID`, `Name`, `Rarity`) VALUES
 (1, 'Gleaming Shell', 6),
 (2, 'Shimmering Scale', 6),
 (3, 'Valstrax Claw+', 6),
@@ -836,10 +357,11 @@ INSERT INTO `item` (`Item_ID`, `Name`, `Rarity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monster`
+-- Table structure for table `Monster`
 --
 
-CREATE TABLE `monster` (
+DROP TABLE IF EXISTS `Monster`;
+CREATE TABLE `Monster` (
   `Monster_ID` int(11) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Title` varchar(100) DEFAULT NULL,
@@ -851,13 +373,16 @@ CREATE TABLE `monster` (
   `Habitat_ID` int(11) DEFAULT NULL,
   `Quest_Star_Rank` varchar(20) GENERATED ALWAYS AS (case when `Hunter_Rank` between 1 and 5 then concat('LR ',`Hunter_Rank`,'★') when `Hunter_Rank` between 6 and 9 then concat('HR ',`Hunter_Rank`,'★') when `Hunter_Rank` >= 10 then concat('MR ',`Hunter_Rank` - 9,'★') else 'Unknown' end) VIRTUAL,
   `Icon` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ========================================
+-- DATA INSERTS ONLY
+-- ========================================
 
 --
--- Dumping data for table `monster`
+-- Data for table `Hunters`
 --
 
-INSERT INTO `monster` (`Monster_ID`, `Name`, `Title`, `Description`, `min_Size`, `max_Size`, `Hunter_Rank`, `Species_ID`, `Habitat_ID`, `Icon`) VALUES
+INSERT INTO `Monster` (`Monster_ID`, `Name`, `Title`, `Description`, `min_Size`, `max_Size`, `Hunter_Rank`, `Species_ID`, `Habitat_ID`, `Icon`) VALUES
 (1, 'Crimson Glow Valstrax', 'Silver Winged Star', 'A variant of the Valstrax Elder Dragon that has been driven mad by its own overflowing dragon energy. It dashes through the heavens like a crimson comet, indiscriminately hunting down anything in its sight. Its unstable energy causes it to constantly glow red, and it is known to unleash a devastating ambush from the stratosphere that can level entire ecosystems.', 1836.88, 2551.22, 18, 12, 8, 'valstrax.png'),
 (2, 'Great Jagras', 'The Glutton', 'The alpha leader of the Jagras pack. It is famous for its distensible jaw and massive stomach, allowing it to swallow prey like Kestodon whole. When gorged, its belly drags on the ground, making it sluggish but adding immense weight to its rolling attacks. It regurgitates food to feed its smaller kin.', 1100.00, 1300.00, 2, 1, 1, 'great_jagras.png'),
 (3, 'Kulu-Ya-Ku', 'Scratching Bird', 'A peculiar Bird Wyvern with developed forelimbs capable of grasping objects. It is known to dig up rocks to use as shields or blunt weapons against predators. Its favorite meal is monster eggs, which it steals with surprising dexterity and cracks open using stone tools.', 850.00, 1000.00, 2, 4, 1, 'kulu_ya_ku.png'),
@@ -901,19 +426,20 @@ INSERT INTO `monster` (`Monster_ID`, `Name`, `Title`, `Description`, `min_Size`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monster_dmg_element`
+-- Table structure for table `Monster_Dmg_Element`
 --
 
-CREATE TABLE `monster_dmg_element` (
+DROP TABLE IF EXISTS `Monster_Dmg_Element`;
+CREATE TABLE `Monster_Dmg_Element` (
   `Monster_ID` int(11) DEFAULT NULL,
   `Element_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `monster_dmg_element`
+-- Dumping data for table `Monster_Dmg_Element`
 --
 
-INSERT INTO `monster_dmg_element` (`Monster_ID`, `Element_ID`) VALUES
+INSERT INTO `Monster_Dmg_Element` (`Monster_ID`, `Element_ID`) VALUES
 (1, 5),
 (4, 6),
 (7, 3),
@@ -940,19 +466,20 @@ INSERT INTO `monster_dmg_element` (`Monster_ID`, `Element_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `monster_weakness`
+-- Table structure for table `Monster_Weakness`
 --
 
-CREATE TABLE `monster_weakness` (
+DROP TABLE IF EXISTS `Monster_Weakness`;
+CREATE TABLE `Monster_Weakness` (
   `Monster_ID` int(11) DEFAULT NULL,
   `Element_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `monster_weakness`
+-- Dumping data for table `Monster_Weakness`
 --
 
-INSERT INTO `monster_weakness` (`Monster_ID`, `Element_ID`) VALUES
+INSERT INTO `Monster_Weakness` (`Monster_ID`, `Element_ID`) VALUES
 (1, 1),
 (1, 2),
 (1, 4),
@@ -1000,20 +527,21 @@ INSERT INTO `monster_weakness` (`Monster_ID`, `Element_ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `species`
+-- Table structure for table `Species`
 --
 
-CREATE TABLE `species` (
+DROP TABLE IF EXISTS `Species`;
+CREATE TABLE `Species` (
   `Species_ID` int(11) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `species`
+-- Dumping data for table `Species`
 --
 
-INSERT INTO `species` (`Species_ID`, `Name`, `Description`) VALUES
+INSERT INTO `Species` (`Species_ID`, `Name`, `Description`) VALUES
 (1, 'Fanged Wyvern', 'Quadrupedal wyverns with heavy builds and developed limbs, often resembling wolves or lizards.'),
 (2, 'Flying Wyvern', 'The most common classification, typically possessing wings and strong legs.'),
 (3, 'Brute Wyvern', 'Bipedal wyverns adapted for land, known for brute strength and heavy plating.'),
@@ -1032,10 +560,11 @@ INSERT INTO `species` (`Species_ID`, `Name`, `Description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weapon`
+-- Table structure for table `Weapon`
 --
 
-CREATE TABLE `weapon` (
+DROP TABLE IF EXISTS `Weapon`;
+CREATE TABLE `Weapon` (
   `Weapon_ID` int(11) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Weapon_Type_ID` int(11) DEFAULT NULL,
@@ -1049,10 +578,10 @@ CREATE TABLE `weapon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `weapon`
+-- Dumping data for table `Weapon`
 --
 
-INSERT INTO `weapon` (`Weapon_ID`, `Name`, `Weapon_Type_ID`, `Attack_Power`, `Element_ID`, `Element_Value`, `Affinity`, `Rarity`, `Monster_ID`, `Defense`) VALUES
+INSERT INTO `Weapon` (`Weapon_ID`, `Name`, `Weapon_Type_ID`, `Attack_Power`, `Element_ID`, `Element_Value`, `Affinity`, `Rarity`, `Monster_ID`, `Defense`) VALUES
 (1, 'Reddnaught Giantwing', 1, 340, 5, 52, 0, 10, 1, 10),
 (2, 'Reddnaught Blade', 2, 330, 5, 48, 0, 10, 1, 0),
 (3, 'Reddnaught Splendor', 4, 320, 5, 55, 0, 10, 1, 0),
@@ -1069,20 +598,21 @@ INSERT INTO `weapon` (`Weapon_ID`, `Name`, `Weapon_Type_ID`, `Attack_Power`, `El
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weapon_crafting`
+-- Table structure for table `Weapon_Crafting`
 --
 
-CREATE TABLE `weapon_crafting` (
+DROP TABLE IF EXISTS `Weapon_Crafting`;
+CREATE TABLE `Weapon_Crafting` (
   `Weapon_ID` int(11) DEFAULT NULL,
   `Item_ID` int(11) DEFAULT NULL,
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `weapon_crafting`
+-- Dumping data for table `Weapon_Crafting`
 --
 
-INSERT INTO `weapon_crafting` (`Weapon_ID`, `Item_ID`, `Quantity`) VALUES
+INSERT INTO `Weapon_Crafting` (`Weapon_ID`, `Item_ID`, `Quantity`) VALUES
 (8, 326, 1),
 (8, 324, 2),
 (8, 231, 1),
@@ -1131,277 +661,6 @@ INSERT INTO `weapon_crafting` (`Weapon_ID`, `Item_ID`, `Quantity`) VALUES
 (12, 314, 6),
 (12, 312, 7);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `weapon_type`
---
-
-CREATE TABLE `weapon_type` (
-  `Weapon_Type_ID` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Icon` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `weapon_type`
---
-
-INSERT INTO `weapon_type` (`Weapon_Type_ID`, `Name`, `Icon`) VALUES
-(1, 'Great Sword', 'wep_gs.png'),
-(2, 'Long Sword', 'wep_ls.png'),
-(3, 'Sword and Shield', 'wep_sns.png'),
-(4, 'Dual Blades', 'wep_db.png'),
-(5, 'Lance', 'wep_lance.png'),
-(6, 'Gunlance', 'wep_gl.png'),
-(7, 'Hammer', 'wep_hammer.png'),
-(8, 'Hunting Horn', 'wep_hh.png'),
-(9, 'Switch Axe', 'wep_sa.png'),
-(10, 'Charge Blade', 'wep_cb.png'),
-(11, 'Insect Glaive', 'wep_ig.png'),
-(12, 'Light Bowgun', 'wep_lbg.png'),
-(13, 'Heavy Bowgun', 'wep_hbg.png'),
-(14, 'Bow', 'wep_bow.png');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `drops`
---
-ALTER TABLE `drops`
-  ADD PRIMARY KEY (`Drop_ID`),
-  ADD UNIQUE KEY `unique_monster_item` (`Monster_ID`,`Item_ID`),
-  ADD KEY `Monster_ID` (`Monster_ID`),
-  ADD KEY `Item_ID` (`Item_ID`);
-
---
--- Indexes for table `element`
---
-ALTER TABLE `element`
-  ADD PRIMARY KEY (`Element_ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
-
---
--- Indexes for table `habitat`
---
-ALTER TABLE `habitat`
-  ADD PRIMARY KEY (`Habitat_ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
-
---
--- Indexes for table `hunter`
---
-ALTER TABLE `hunter`
-  ADD PRIMARY KEY (`Hunter_ID`),
-  ADD UNIQUE KEY `Username` (`Username`);
-
---
--- Indexes for table `hunters`
---
-ALTER TABLE `hunters`
-  ADD PRIMARY KEY (`Hunter_ID`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `fk_fav_monster` (`favorite_monster_id`);
-
---
--- Indexes for table `hunter_record`
---
-ALTER TABLE `hunter_record`
-  ADD PRIMARY KEY (`Record_ID`),
-  ADD UNIQUE KEY `Hunter_ID` (`Hunter_ID`,`Monster_ID`),
-  ADD KEY `Monster_ID` (`Monster_ID`);
-
---
--- Indexes for table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`Item_ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
-
---
--- Indexes for table `monster`
---
-ALTER TABLE `monster`
-  ADD PRIMARY KEY (`Monster_ID`),
-  ADD UNIQUE KEY `Name` (`Name`),
-  ADD KEY `Species_ID` (`Species_ID`),
-  ADD KEY `Habitat_ID` (`Habitat_ID`);
-
---
--- Indexes for table `monster_dmg_element`
---
-ALTER TABLE `monster_dmg_element`
-  ADD KEY `Monster_ID` (`Monster_ID`),
-  ADD KEY `Element_ID` (`Element_ID`);
-
---
--- Indexes for table `monster_weakness`
---
-ALTER TABLE `monster_weakness`
-  ADD KEY `Monster_ID` (`Monster_ID`),
-  ADD KEY `Element_ID` (`Element_ID`);
-
---
--- Indexes for table `species`
---
-ALTER TABLE `species`
-  ADD PRIMARY KEY (`Species_ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
-
---
--- Indexes for table `weapon`
---
-ALTER TABLE `weapon`
-  ADD PRIMARY KEY (`Weapon_ID`),
-  ADD KEY `Weapon_Type_ID` (`Weapon_Type_ID`),
-  ADD KEY `Element_ID` (`Element_ID`),
-  ADD KEY `fk_weapon_monster` (`Monster_ID`);
-
---
--- Indexes for table `weapon_crafting`
---
-ALTER TABLE `weapon_crafting`
-  ADD KEY `Weapon_ID` (`Weapon_ID`),
-  ADD KEY `Item_ID` (`Item_ID`);
-
---
--- Indexes for table `weapon_type`
---
-ALTER TABLE `weapon_type`
-  ADD PRIMARY KEY (`Weapon_Type_ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `drops`
---
-ALTER TABLE `drops`
-  MODIFY `Drop_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=327;
-
---
--- AUTO_INCREMENT for table `element`
---
-ALTER TABLE `element`
-  MODIFY `Element_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `habitat`
---
-ALTER TABLE `habitat`
-  MODIFY `Habitat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `hunter`
---
-ALTER TABLE `hunter`
-  MODIFY `Hunter_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hunters`
---
-ALTER TABLE `hunters`
-  MODIFY `Hunter_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `hunter_record`
---
-ALTER TABLE `hunter_record`
-  MODIFY `Record_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `item`
---
-ALTER TABLE `item`
-  MODIFY `Item_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=334;
-
---
--- AUTO_INCREMENT for table `monster`
---
-ALTER TABLE `monster`
-  MODIFY `Monster_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `species`
---
-ALTER TABLE `species`
-  MODIFY `Species_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `weapon`
---
-ALTER TABLE `weapon`
-  MODIFY `Weapon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `weapon_type`
---
-ALTER TABLE `weapon_type`
-  MODIFY `Weapon_Type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `drops`
---
-ALTER TABLE `drops`
-  ADD CONSTRAINT `drops_ibfk_1` FOREIGN KEY (`Monster_ID`) REFERENCES `monster` (`Monster_ID`),
-  ADD CONSTRAINT `drops_ibfk_2` FOREIGN KEY (`Item_ID`) REFERENCES `item` (`Item_ID`);
-
---
--- Constraints for table `hunters`
---
-ALTER TABLE `hunters`
-  ADD CONSTRAINT `fk_fav_monster` FOREIGN KEY (`favorite_monster_id`) REFERENCES `monster` (`Monster_ID`);
-
---
--- Constraints for table `hunter_record`
---
-ALTER TABLE `hunter_record`
-  ADD CONSTRAINT `hunter_record_ibfk_1` FOREIGN KEY (`Hunter_ID`) REFERENCES `hunter` (`Hunter_ID`),
-  ADD CONSTRAINT `hunter_record_ibfk_2` FOREIGN KEY (`Monster_ID`) REFERENCES `monster` (`Monster_ID`);
-
---
--- Constraints for table `monster`
---
-ALTER TABLE `monster`
-  ADD CONSTRAINT `monster_ibfk_1` FOREIGN KEY (`Species_ID`) REFERENCES `species` (`Species_ID`),
-  ADD CONSTRAINT `monster_ibfk_2` FOREIGN KEY (`Habitat_ID`) REFERENCES `habitat` (`Habitat_ID`);
-
---
--- Constraints for table `monster_dmg_element`
---
-ALTER TABLE `monster_dmg_element`
-  ADD CONSTRAINT `monster_dmg_element_ibfk_1` FOREIGN KEY (`Monster_ID`) REFERENCES `monster` (`Monster_ID`),
-  ADD CONSTRAINT `monster_dmg_element_ibfk_2` FOREIGN KEY (`Element_ID`) REFERENCES `element` (`Element_ID`);
-
---
--- Constraints for table `monster_weakness`
---
-ALTER TABLE `monster_weakness`
-  ADD CONSTRAINT `monster_weakness_ibfk_1` FOREIGN KEY (`Monster_ID`) REFERENCES `monster` (`Monster_ID`),
-  ADD CONSTRAINT `monster_weakness_ibfk_2` FOREIGN KEY (`Element_ID`) REFERENCES `element` (`Element_ID`);
-
---
--- Constraints for table `weapon`
---
-ALTER TABLE `weapon`
-  ADD CONSTRAINT `fk_weapon_monster` FOREIGN KEY (`Monster_ID`) REFERENCES `monster` (`Monster_ID`),
-  ADD CONSTRAINT `weapon_ibfk_1` FOREIGN KEY (`Weapon_Type_ID`) REFERENCES `weapon_type` (`Weapon_Type_ID`),
-  ADD CONSTRAINT `weapon_ibfk_2` FOREIGN KEY (`Element_ID`) REFERENCES `element` (`Element_ID`);
-
---
--- Constraints for table `weapon_crafting`
---
-ALTER TABLE `weapon_crafting`
-  ADD CONSTRAINT `weapon_crafting_ibfk_1` FOREIGN KEY (`Weapon_ID`) REFERENCES `weapon` (`Weapon_ID`),
-  ADD CONSTRAINT `weapon_crafting_ibfk_2` FOREIGN KEY (`Item_ID`) REFERENCES `item` (`Item_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

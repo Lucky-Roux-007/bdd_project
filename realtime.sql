@@ -1,1 +1,2 @@
-SELECT * FROM Hunters;
+SELECT * FROM Hunters
+WHERE username like "%Yog%"
