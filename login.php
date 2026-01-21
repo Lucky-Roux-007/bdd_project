@@ -2,19 +2,13 @@
 session_start();
 include 'includes/db.php';
 
-// --- NEW LOGIC: Handle Logout ---
-// If the URL contains ?logout=true, destroy the session
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    
-    // Redirect to self to clear the URL parameters and show clean login form
     header("Location: login.php");
     exit();
 }
-// --------------------------------
 
-// Normal Login Logic
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
@@ -26,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($hunter && password_verify($password, $hunter['password'])) {
         $_SESSION['user_id'] = $hunter['Hunter_ID'];
         $_SESSION['username'] = $hunter['username'];
-        $_SESSION['rank'] = $hunter['rank_type'] . " " . $hunter['rank_level']; // Combine them for easier display
-        
+        $_SESSION['rank'] = $hunter['rank_type'] . " " . $hunter['rank_level'];
         header("Location: index.php");
         exit();
     } else {

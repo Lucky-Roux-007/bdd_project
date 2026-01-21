@@ -1,5 +1,4 @@
 <?php
-// includes/db.php
 
 $host = 'db';
 $db   = 'monster_hunter_db';

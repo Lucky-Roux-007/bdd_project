@@ -1,12 +1,10 @@
 <?php
-// species_details.php
 session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// 1. Fetch Species Details
 $stmt = $pdo->prepare("SELECT * FROM Species WHERE Species_ID = ?");
 $stmt->execute([$id]);
 $species = $stmt->fetch();
@@ -15,7 +13,6 @@ if (!$species) {
     die("<div class='container' style='padding:50px; text-align:center;'>Species not found.</div>");
 }
 
-// 2. Fetch Monsters belonging to this Species
 $stmtMonsters = $pdo->prepare("
     SELECT Monster_ID, Name, Title, Icon, Quest_Star_Rank 
     FROM Monster 

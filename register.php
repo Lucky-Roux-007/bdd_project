@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profile_pic = "default_hunter.png";
 
     if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
-        // Use absolute path first for Docker/server environments, but also support relative paths
         $upload_dir = __DIR__ . '/assets/uploads/';
         if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
         if (!is_writable($upload_dir)) {
@@ -47,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $rank_display = "$rank_type $rank_level"; // For the old 'rank' column
+    $rank_display = "$rank_type $rank_level";
 
     $sql = "INSERT INTO Hunters (username, password, rank, rank_type, rank_level, favorite_game, favorite_monster_id, favorite_weapon, palico_name, profile_picture) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

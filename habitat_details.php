@@ -1,12 +1,10 @@
 <?php
-// habitat_details.php
 session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// 1. Fetch Habitat Details
 $stmt = $pdo->prepare("SELECT * FROM Habitat WHERE Habitat_ID = ?");
 $stmt->execute([$id]);
 $habitat = $stmt->fetch();
@@ -15,7 +13,6 @@ if (!$habitat) {
     die("<div class='container' style='padding:50px;'>Habtiat not found.</div>");
 }
 
-// 2. Fetch Monsters residing here
 $stmtMonsters = $pdo->prepare("
     SELECT M.Monster_ID, M.Name, M.Title, M.Icon, M.Quest_Star_Rank, S.Name AS Species
     FROM Monster M

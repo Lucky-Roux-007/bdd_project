@@ -18,7 +18,7 @@ $stmt->execute([$id]);
 $monster = $stmt->fetch();
 
 if (!$monster) {
-    die("<div class='container' style='text-align:center; padding:50px;'><h2>🚫 RECORD NOT FOUND</h2></div>");
+    die("<div class='container' style='text-align:center; padding:50px;'><h2>RECORD NOT FOUND</h2></div>");
 }
 
 // 2. Fetch Drops
@@ -32,7 +32,7 @@ $stmtDrops = $pdo->prepare("
 $stmtDrops->execute([$id]);
 $drops = $stmtDrops->fetchAll();
 
-// 3. Fetch Weaknesses (What hurts it)
+// 3. Fetch Weaknesses
 $stmtWeak = $pdo->prepare("
     SELECT E.Name, E.Icon 
     FROM Monster_Weakness MW
@@ -42,7 +42,7 @@ $stmtWeak = $pdo->prepare("
 $stmtWeak->execute([$id]);
 $weaknesses = $stmtWeak->fetchAll();
 
-// 4. Fetch Elements Used (What it attacks with) - USING YOUR EXISTING TABLE
+// 4. Fetch Elements Used
 $stmtElements = $pdo->prepare("
     SELECT E.Name, E.Icon 
     FROM Monster_Dmg_Element MDE

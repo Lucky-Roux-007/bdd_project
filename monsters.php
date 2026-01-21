@@ -1,10 +1,9 @@
 <?php
-// monsters.php
 session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
-// 1. Sorting Logic
+// Sorting Logic
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'rank';
 
 if ($sort === 'name') {
@@ -17,7 +16,6 @@ if ($sort === 'name') {
     $activeName = "";
 }
 
-// 2. Fetch Data
 $sql = "SELECT M.Monster_ID, M.Name, M.Title, M.Quest_Star_Rank, M.Icon, S.Name AS Species
         FROM Monster M
         LEFT JOIN Species S ON M.Species_ID = S.Species_ID

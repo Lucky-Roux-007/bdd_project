@@ -1,10 +1,8 @@
 <?php
-// armory.php
 session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
-// Fetch Weapons
 $stmt = $pdo->query("
     SELECT W.*, 
            E.Name AS Element_Name, 

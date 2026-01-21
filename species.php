@@ -3,7 +3,6 @@ session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
-// Fetch all species with a count of how many monsters belong to each
 $stmt = $pdo->query("
     SELECT S.*, COUNT(M.Monster_ID) as Monster_Count 
     FROM Species S

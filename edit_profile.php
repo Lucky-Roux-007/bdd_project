@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     function handleUpload($fileInputName, $prefix, $userId) {
         if (isset($_FILES[$fileInputName]) && $_FILES[$fileInputName]['error'] == 0) {
-            // Use absolute path first for Docker/server environments, but also support relative paths
             $upload_dir = __DIR__ . '/assets/uploads/';
             if (!is_dir($upload_dir)) { @mkdir($upload_dir, 0755, true); }
             if (!is_writable($upload_dir)) {

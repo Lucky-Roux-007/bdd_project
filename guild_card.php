@@ -13,11 +13,10 @@ $join_date = date("M d, Y", strtotime($hunter['created_at']));
 $avatar = "assets/uploads/" . ($hunter['profile_picture'] ?: "default_hunter.png");
 $screenshot = $hunter['hunter_screenshot'] ? "assets/uploads/" . $hunter['hunter_screenshot'] : null;
 
-// --- ICON LOGIC ---
 $monster_icon = "assets/" . ($hunter['MonsterIcon'] ?: "icon_potion.png");
 $palico_icon = "assets/palico.png"; 
 
-// --- WEAPON MAPPING (Matches your filenames) ---
+// --- WEAPON MAPPING ---
 $weapon_map = [
     "Great Sword"      => "wep_gs.png",
     "Long Sword"       => "wep_ls.png",
@@ -35,11 +34,9 @@ $weapon_map = [
     "Bow"              => "wep_bow.png"
 ];
 
-// Get the correct filename, or default to Great Sword if something breaks
 $fav_wep = $hunter['favorite_weapon'];
 $wep_file = isset($weapon_map[$fav_wep]) ? $weapon_map[$fav_wep] : "wep_gs.png";
-$weapon_icon = "assets/weapons/" . $wep_file; // Note: Points to 'weapons' subfolder
-?>
+$weapon_icon = "assets/weapons/" . $wep_file; 
 
 <!DOCTYPE html>
 <html lang="en">

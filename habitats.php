@@ -3,7 +3,6 @@ session_start();
 require 'includes/db.php';
 include 'includes/navbar.php';
 
-// Fetch all locations
 $stmt = $pdo->query("SELECT * FROM Habitat ORDER BY Habitat_ID ASC");
 $locations = $stmt->fetchAll();
 ?>
